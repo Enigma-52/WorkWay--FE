@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import express from "express";
 import { createServer as createViteServer } from "vite";
+import rateLimit from "express-rate-limit";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProduction = process.env.NODE_ENV === "production";
@@ -28,8 +29,20 @@ if (isProduction) {
   }
 }
 
+// Rate limiter to prevent abuse
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again later.",
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 async function createServer() {
   const app = express();
+
+  // Apply rate limiting
+  app.use(limiter);
 
   let vite;
   if (!isProduction) {
