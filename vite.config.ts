@@ -21,4 +21,15 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
+  ssr: {
+    // Add any external dependencies that shouldn't be SSR transformed
+    noExternal: ['posthog-js'],
+  },
 }));
