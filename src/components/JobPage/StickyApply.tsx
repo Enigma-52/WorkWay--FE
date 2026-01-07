@@ -10,6 +10,9 @@ const StickyApply = ({ url }: StickyApplyProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Check if window is defined (SSR-safe)
+    if (typeof window === 'undefined') return;
+    
     const handleScroll = () => {
       // Show after scrolling past hero section (roughly 400px)
       setIsVisible(window.scrollY > 400);

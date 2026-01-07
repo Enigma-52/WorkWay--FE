@@ -5,10 +5,10 @@ import JobSection from "../components/JobPage/Section";
 import StickyApply from "../components/JobPage/StickyApply";
 import { getJobBySlug } from "../services/jobService";
 
-export async function loader({ params }: { params: any }) {
+export async function loader({ params }: { params: { slug?: string } }) {
   const { slug } = params;
 
-  const jobDetails = await getJobBySlug(slug);
+  const jobDetails = await getJobBySlug(slug || '');
 
   return jobDetails;
 }
