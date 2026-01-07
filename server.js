@@ -10,13 +10,23 @@ const port = process.env.PORT || 5173;
 const base = process.env.BASE || "/";
 
 // Cached production assets
-const templateHtml = isProduction
-  ? fs.readFileSync(path.resolve(__dirname, "./dist/client/index.html"), "utf-8")
-  : "";
+let templateHtml = "";
+let ssrManifest;
 
-const ssrManifest = isProduction
-  ? fs.readFileSync(path.resolve(__dirname, "./dist/client/.vite/ssr-manifest.json"), "utf-8")
-  : undefined;
+if (isProduction) {
+  const indexPath = path.resolve(__dirname, "./dist/client/index.html");
+  const manifestPath = path.resolve(__dirname, "./dist/client/.vite/ssr-manifest.json");
+  
+  if (fs.existsSync(indexPath)) {
+    templateHtml = fs.readFileSync(indexPath, "utf-8");
+  } else {
+    console.error("Production build not found. Run 'npm run build' first.");
+  }
+  
+  if (fs.existsSync(manifestPath)) {
+    ssrManifest = fs.readFileSync(manifestPath, "utf-8");
+  }
+}
 
 async function createServer() {
   const app = express();
@@ -60,9 +70,13 @@ async function createServer() {
     } catch (e) {
       if (!isProduction) {
         vite.ssrFixStacktrace(e);
+        console.error(e.stack);
+        res.status(500).end(e.stack);
+      } else {
+        // Log error server-side but don't expose details to client
+        console.error("SSR Error:", e);
+        res.status(500).end("Internal Server Error");
       }
-      console.log(e.stack);
-      res.status(500).end(e.stack);
     }
   });
 
