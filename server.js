@@ -9,6 +9,16 @@ const PORT = Number.parseInt(process.env.PORT || "5173");
 
 const app = express();
 
+app.get("/sitemap.xml", async (req, res) => {
+  const backendUrl = "https://workway-be.onrender.com/api";
+
+  const r = await fetch(`${backendUrl}/sitemap.xml`);
+  const xml = await r.text();
+
+  res.setHeader("Content-Type", "application/xml");
+  res.send(xml);
+});
+
 app.use(compression());
 app.disable("x-powered-by");
 
