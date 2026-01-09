@@ -1,4 +1,17 @@
 import type { Route } from "./+types/LandingPage";
+import Navbar from "~/components/LandingPage/Navbar";
+import Hero from "~/components/LandingPage/Hero";
+import SocialProof from "~/components/LandingPage/SocialProof";
+import ProblemSection from "~/components/LandingPage/ProblemSection";
+import SolutionSection from "~/components/LandingPage/SolutionSection";
+import ForCandidates from "~/components/LandingPage/ForCandidates";
+import HireMeProfiles from "~/components/LandingPage/HireMeProfiles";
+import ForEmployers from "~/components/LandingPage/ForEmployers";
+import AISection from "~/components/LandingPage/AISection";
+import MarketSignals from "~/components/LandingPage/MarketSignals";
+import WhatWeAreNot from "~/components/LandingPage/WhatWeAreNot";
+import FinalCTA from "~/components/LandingPage/FinalCTA";
+import Footer from "~/components/LandingPage/Footer";
 
 export function meta({}: Route.MetaArgs) {
   const title = "WorkWay — Jobs Simplified. Find Your Next Opportunity";
@@ -26,39 +39,34 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function LandingPage() {
+const Index = () => {
   return (
-    <main style={{ padding: 40, maxWidth: 900, margin: "0 auto" }}>
-      <h1>WorkWay</h1>
-
-      <p style={{ fontSize: 18, marginTop: 12 }}>
-        Jobs, simplified. Find the right opportunities without the noise.
-      </p>
-
-      <p style={{ marginTop: 24 }}>
-        WorkWay helps you explore companies, discover relevant jobs, and apply
-        faster — all in one clean and simple experience.
-      </p>
-
-      <div style={{ marginTop: 32 }}>
-        <button
-          style={{
-            padding: "12px 20px",
-            fontSize: 16,
-            cursor: "pointer",
-          }}
-          onClick={() => alert("Client hydration works!")}
-        >
-          Get Started
-        </button>
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="max-w-6xl mx-auto px-6 space-y-32">
+        <Navbar />
       </div>
-
-      <hr style={{ margin: "40px 0" }} />
-
-      <p style={{ color: "#666" }}>
-        (Developer note: If you can see this text in “View Page Source”, SSR is
-        working correctly.)
-      </p>
-    </main>
+      <main>
+        <Hero />
+        <div className="max-w-6xl mx-auto px-6 space-y-32">
+          <SocialProof />
+          <ProblemSection />
+          <SolutionSection />
+          <section id="candidates">
+            <ForCandidates />
+          </section>
+          <HireMeProfiles />
+          <section id="employers">
+            <ForEmployers />
+          </section>
+          <AISection />
+          <MarketSignals />
+          <WhatWeAreNot />
+          <FinalCTA />
+        </div>
+      </main>
+      <Footer />
+    </div>
   );
-}
+};
+
+export default Index;
