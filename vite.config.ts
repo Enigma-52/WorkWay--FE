@@ -1,24 +1,26 @@
+import { reactRouter } from "@react-router/dev/vite";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ isSsrBuild }) => ({
+  build: {
+    rollupOptions: isSsrBuild
+      ? {
+          input: "./server/app.ts",
+        }
+      : undefined,
+  },
+  plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   server: {
-    host: "::",
-    port: 8080,
     proxy: {
-    "/api": {
-      target: "http://localhost:3000",
-      changeOrigin: true,
-    },
-  },
-  },
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+      '/api': {
+        // target: 'http://10.32.0.118:8081',
+        target: 'http://localhost:8081',
+        // target: 'https://eqhq.ai',
+        changeOrigin: true,
+        secure: true
+      }
+    }
+  }
 }));
