@@ -9,6 +9,17 @@ const PORT = Number.parseInt(process.env.PORT || "5173");
 
 const app = express();
 
+app.get("/api/cron/daily", async (req, res) => {
+  const secret =
+    req.get("x-cron-secret") ||
+    req.query.secret;
+
+  if (secret !== process.env.CRON_SECRET) {
+    return res.status(403).send("Forbidden");
+  }
+  res.send("OK");
+});
+
 app.get("/sitemap.xml", async (req, res) => {
   const backendUrl = "https://workway-be.onrender.com/api";
 
@@ -126,6 +137,15 @@ function matchesAny(ua, patterns) {
  * - Blocks AI scrapers, SEO tools, and unknown bots
  */
 app.use((req, res, next) => {
+
+  const cronSecret =
+    req.get("x-cron-secret") ||
+    req.query.secret;
+
+  if (cronSecret && cronSecret === process.env.CRON_SECRET) {
+    return next();
+  }
+
   const ua = req.get('User-Agent') || '';
   const ip = req.ip || req.headers['x-forwarded-for'] || '';
   const clientIp = Array.isArray(ip) ? ip[0] : ip.split(',')[0].trim();
