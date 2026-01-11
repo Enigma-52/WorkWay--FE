@@ -1,6 +1,14 @@
 import compression from "compression";
 import express from "express";
 import { isbot } from "isbot";
+import mixpanel from "mixpanel-browser";
+
+// Create an instance of the Mixpanel object, your token is already added to this snippet
+mixpanel.init('572f2bc3511f9a768d95e72b7e925c37', {
+  autocapture: true,
+  record_sessions_percent: 0,
+})
+
 
 // Short-circuit the type-checking of the built output.
 const BUILD_PATH = "./build/server/index.js";
