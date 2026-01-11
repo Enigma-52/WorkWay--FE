@@ -9,19 +9,14 @@ const Navbar = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 py-4">
-        <div className="container px-4">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between p-3 rounded-2xl border border-border/50 bg-background/80 backdrop-blur-xl">
-            {/* Logo */}
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">
-                  W
-                </span>
+              <div className="flex items-center justify-center">
+                <img src="/logo.png" alt="WorkWay" className="w-12 h-12" />
               </div>
               <span className="text-lg font-bold">WorkWay</span>
             </div>
-
-            {/* Nav Links */}
             <div className="hidden md:flex items-center gap-8">
               <a
                 href="#candidates"

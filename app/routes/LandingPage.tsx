@@ -42,9 +42,7 @@ export function meta({}: Route.MetaArgs) {
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-6xl mx-auto px-6 space-y-32">
-        <Navbar />
-      </div>
+      <Navbar />
       <main>
         <Hero />
         <div className="max-w-6xl mx-auto px-6 space-y-32">
@@ -64,7 +62,6 @@ const Index = () => {
           <FinalCTA />
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
