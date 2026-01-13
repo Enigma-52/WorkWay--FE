@@ -1,0 +1,43 @@
+{
+  "name": "WorkWay - Jobs & Company Pages",
+  "short_name": "WorkWay",
+  "description": "Search jobs and explore detailed company pages. WorkWay is a job discovery platform with job listings, company profiles, and role-based job pages.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity", "education", "careers"],
+  "keywords": [
+    "jobs",
+    "job search",
+    "job listings",
+    "company pages",
+    "company profiles",
+    "companies",
+    "careers",
+    "recruitment",
+    "employment",
+    "startup jobs",
+    "remote jobs",
+    "engineering jobs",
+    "product jobs",
+    "tech jobs"
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "screenshots": []
+}
