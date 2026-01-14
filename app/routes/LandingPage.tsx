@@ -1,5 +1,4 @@
 import type { Route } from "./+types/LandingPage";
-import Navbar from "~/components/LandingPage/Navbar";
 import Hero from "~/components/LandingPage/Hero";
 import SocialProof from "~/components/LandingPage/SocialProof";
 import ProblemSection from "~/components/LandingPage/ProblemSection";
@@ -11,7 +10,7 @@ import AISection from "~/components/LandingPage/AISection";
 import MarketSignals from "~/components/LandingPage/MarketSignals";
 import WhatWeAreNot from "~/components/LandingPage/WhatWeAreNot";
 import FinalCTA from "~/components/LandingPage/FinalCTA";
-import Footer from "~/components/LandingPage/Footer";
+import Footer from "~/components/Layout/Footer";
 
 export function meta({}: Route.MetaArgs) {
   const title = "WorkWay — Jobs Simplified. Find Your Next Opportunity";
@@ -42,7 +41,6 @@ export function meta({}: Route.MetaArgs) {
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
       <main>
         <Hero />
         <div className="max-w-6xl mx-auto px-6 space-y-32">

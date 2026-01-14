@@ -6,5 +6,10 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
-  route("/", "routes/LandingPage.tsx"),
+  layout("routes/layout.tsx", [
+    route("/", "routes/LandingPage.tsx"),
+    route("/about", "routes/About.tsx"),
+
+    route("*", "routes/NotFound.tsx"),
+  ]),
 ] satisfies RouteConfig;
