@@ -16,7 +16,7 @@ export default defineConfig(({ isSsrBuild }) => ({
     proxy: {
       '/api': {
         // target: 'http://10.32.0.118:8081',
-        target: 'http://localhost:8081',
+        target: 'http://localhost:3000',
         // target: 'https://eqhq.ai',
         changeOrigin: true,
         secure: true

@@ -22,10 +22,11 @@ const isServer = () => typeof window === "undefined";
 
 function getBaseUrl(): string {
   if (isServer()) {
-    return process.env.PROXY_SERVER_URL || "";
-  }
-  if (import.meta.env.VITE_ENV === "dev") {
-    return "http://localhost:5173";
+    const url = process.env.PROXY_SERVER_URL;
+    if (!url) {
+      throw new Error("PROXY_SERVER_URL is not set");
+    }
+    return url;
   }
   return window.location.origin;
 }

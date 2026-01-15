@@ -17,6 +17,11 @@ type Pages = {
   "/about": {
     params: {};
   };
+  "/company/:companySlug": {
+    params: {
+      "companySlug": string;
+    };
+  };
   "/*": {
     params: {
       "*": string;
@@ -27,11 +32,11 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/about" | "/*";
+    page: "/" | "/about" | "/company/:companySlug" | "/*";
   };
   "routes/Layout.tsx": {
     id: "routes/Layout";
-    page: "/" | "/about" | "/*";
+    page: "/" | "/about" | "/company/:companySlug" | "/*";
   };
   "routes/LandingPage.tsx": {
     id: "routes/LandingPage";
@@ -40,6 +45,10 @@ type RouteFiles = {
   "routes/About.tsx": {
     id: "routes/About";
     page: "/about";
+  };
+  "routes/CompanyPage.tsx": {
+    id: "routes/CompanyPage";
+    page: "/company/:companySlug";
   };
   "routes/NotFound.tsx": {
     id: "routes/NotFound";
@@ -52,5 +61,6 @@ type RouteModules = {
   "routes/Layout": typeof import("./app/routes/Layout.tsx");
   "routes/LandingPage": typeof import("./app/routes/LandingPage.tsx");
   "routes/About": typeof import("./app/routes/About.tsx");
+  "routes/CompanyPage": typeof import("./app/routes/CompanyPage.tsx");
   "routes/NotFound": typeof import("./app/routes/NotFound.tsx");
 };

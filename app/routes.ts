@@ -9,7 +9,7 @@ export default [
   layout("routes/Layout.tsx", [
     route("/", "routes/LandingPage.tsx"),
     route("/about", "routes/About.tsx"),
-
+    route("/company/:companySlug", "routes/CompanyPage.tsx"),
     route("*", "routes/NotFound.tsx"),
   ]),
 ] satisfies RouteConfig;
