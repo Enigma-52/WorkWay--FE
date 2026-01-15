@@ -30,7 +30,7 @@ export function CompanyHeader({ company }: CompanyHeaderProps) {
           <div className="flex-1 max-w-2xl">
             <div className="flex items-center gap-4 mb-4">
               {company.logo_url ? (
-                <div className="w-16 h-16 rounded-xl gradient-card border border-border flex items-center justify-center glow-subtle overflow-hidden">
+                <div className="w-20 h-20">
                   <img
                     src={company.logo_url}
                     alt={`${company.name} logo`}
