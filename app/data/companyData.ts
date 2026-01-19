@@ -25,6 +25,8 @@ export interface Company {
   platform: string;
   namespace: string;
   jobListings: JobListing[];
+  is_actively_hiring: boolean;
+  jobs_open_count: number;
 }
 
 export function getUniqueLocations(jobs: JobListing[]): string[] {

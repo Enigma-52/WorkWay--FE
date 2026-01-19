@@ -1,14 +1,16 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
-
+import { Link } from "react-router";
 const Navbar = () => {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="WorkWay" className="w-9 h-9" />
-          <span className="text-base font-semibold">WorkWay</span>
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/logo.png" alt="WorkWay" className="w-9 h-9" />
+            <span className="text-base font-semibold">WorkWay</span>
+          </Link>
         </div>
 
         {/* Links */}
@@ -32,6 +34,12 @@ const Navbar = () => {
             Companies
           </a>
           <a
+            href="/domains"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Domains
+          </a>
+          <a
             href="/hireme"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
@@ -40,7 +48,7 @@ const Navbar = () => {
         </nav>
 
         {/* CTA */}
-        <Button size="sm" className="gap-1">
+        <Button size="sm" className="cursor-pointer gap-1">
           Get Started
           <ArrowRight className="w-4 h-4" />
         </Button>

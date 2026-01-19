@@ -1,34 +1,39 @@
-# Default: allow search engines
+# Allow all real search engines
 User-agent: *
-Disallow: /path/admin
-Disallow: /tmp
 Allow: /
 
-# OpenAI training bot (block completely)
+# Block AI training bots (but NOT search / answer bots)
 User-agent: GPTBot
 Disallow: /
 
-# OpenAI search indexer (allow for AI answers)
-User-agent: OAI-SearchBot
-Disallow: /path/admin
-Allow: /
-
-# Perplexity search bot (allow for AI answers)
-User-agent: PerplexityBot
-Disallow: /path/admin
-Allow: /
-
-# Amazon crawler (not useful for finance site, block)
-User-agent: Amazonbot
+User-agent: CCBot
 Disallow: /
 
-# Semrush SEO crawler (block)
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Block SEO scrapers
 User-agent: SemrushBot
 Disallow: /
 
-# Ahrefs SEO crawler (block)
 User-agent: AhrefsBot
 Disallow: /
 
-# Sitemap for indexing
-Sitemap: https://workway.dev/sitemap.xml
+User-agent: Amazonbot
+Disallow: /
+
+# Allow AI search / answer bots
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://www.workway.dev/sitemap.xml

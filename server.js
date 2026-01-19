@@ -20,15 +20,19 @@ app.get("/api/cron/daily", async (req, res) => {
   res.send("OK");
 });
 
-app.get("/sitemap.xml", async (req, res) => {
-  const backendUrl = "https://workway-be.onrender.com/api";
+app.get(/^\/sitemap.*\.xml$/, async (req, res) => {
+  const backendUrl = process.env.PROXY_SERVER_URL; 
 
-  const r = await fetch(`${backendUrl}/sitemap.xml`);
-  const xml = await r.text();
+  const targetUrl = `${backendUrl}/api${req.originalUrl}`;
 
+  const r = await fetch(targetUrl);
+  const text = await r.text();
+
+  res.status(r.status);
   res.setHeader("Content-Type", "application/xml");
-  res.send(xml);
+  res.send(text);
 });
+
 
 app.use(compression());
 app.disable("x-powered-by");

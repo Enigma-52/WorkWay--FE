@@ -14,12 +14,34 @@ type Pages = {
   "/": {
     params: {};
   };
+  "/jobs": {
+    params: {};
+  };
   "/about": {
+    params: {};
+  };
+  "/companies": {
+    params: {};
+  };
+  "/domains": {
+    params: {};
+  };
+  "/hireme": {
     params: {};
   };
   "/company/:companySlug": {
     params: {
       "companySlug": string;
+    };
+  };
+  "/domain/:domainSlug": {
+    params: {
+      "domainSlug": string;
+    };
+  };
+  "/job/:jobSlug": {
+    params: {
+      "jobSlug": string;
     };
   };
   "/*": {
@@ -32,23 +54,47 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/about" | "/company/:companySlug" | "/*";
+    page: "/" | "/jobs" | "/about" | "/companies" | "/domains" | "/hireme" | "/company/:companySlug" | "/domain/:domainSlug" | "/job/:jobSlug" | "/*";
   };
   "routes/Layout.tsx": {
     id: "routes/Layout";
-    page: "/" | "/about" | "/company/:companySlug" | "/*";
+    page: "/" | "/jobs" | "/about" | "/companies" | "/domains" | "/hireme" | "/company/:companySlug" | "/domain/:domainSlug" | "/job/:jobSlug" | "/*";
   };
   "routes/LandingPage.tsx": {
     id: "routes/LandingPage";
     page: "/";
   };
+  "routes/JobsFeed.tsx": {
+    id: "routes/JobsFeed";
+    page: "/jobs";
+  };
   "routes/About.tsx": {
     id: "routes/About";
     page: "/about";
   };
+  "routes/CompaniesPage.tsx": {
+    id: "routes/CompaniesPage";
+    page: "/companies";
+  };
+  "routes/Domains.tsx": {
+    id: "routes/Domains";
+    page: "/domains";
+  };
+  "routes/HireMe.tsx": {
+    id: "routes/HireMe";
+    page: "/hireme";
+  };
   "routes/CompanyPage.tsx": {
     id: "routes/CompanyPage";
     page: "/company/:companySlug";
+  };
+  "routes/DomainPage.tsx": {
+    id: "routes/DomainPage";
+    page: "/domain/:domainSlug";
+  };
+  "routes/JobPage.tsx": {
+    id: "routes/JobPage";
+    page: "/job/:jobSlug";
   };
   "routes/NotFound.tsx": {
     id: "routes/NotFound";
@@ -60,7 +106,13 @@ type RouteModules = {
   "root": typeof import("./app/root.tsx");
   "routes/Layout": typeof import("./app/routes/Layout.tsx");
   "routes/LandingPage": typeof import("./app/routes/LandingPage.tsx");
+  "routes/JobsFeed": typeof import("./app/routes/JobsFeed.tsx");
   "routes/About": typeof import("./app/routes/About.tsx");
+  "routes/CompaniesPage": typeof import("./app/routes/CompaniesPage.tsx");
+  "routes/Domains": typeof import("./app/routes/Domains.tsx");
+  "routes/HireMe": typeof import("./app/routes/HireMe.tsx");
   "routes/CompanyPage": typeof import("./app/routes/CompanyPage.tsx");
+  "routes/DomainPage": typeof import("./app/routes/DomainPage.tsx");
+  "routes/JobPage": typeof import("./app/routes/JobPage.tsx");
   "routes/NotFound": typeof import("./app/routes/NotFound.tsx");
 };

@@ -14,7 +14,7 @@ interface DomainAccordionProps {
 
 export function DomainAccordion({ jobsByDomain }: DomainAccordionProps) {
   const domains = Object.keys(jobsByDomain).sort(
-    (a, b) => jobsByDomain[b].length - jobsByDomain[a].length
+    (a, b) => jobsByDomain[b].length - jobsByDomain[a].length,
   );
 
   if (domains.length === 0) {
@@ -43,7 +43,6 @@ export function DomainAccordion({ jobsByDomain }: DomainAccordionProps) {
                 {jobsByDomain[domain].length} roles
               </span>
             </div>
-            <ChevronDown className="w-4 h-4 text-muted-foreground transition-transform duration-200 shrink-0" />
           </AccordionTrigger>
 
           <AccordionContent className="pb-0">

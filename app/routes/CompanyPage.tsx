@@ -25,8 +25,7 @@ export function meta({ data, params }: Route.MetaArgs) {
       ? `Apply to ${count} open roles at ${name}. View open jobs, teams, and hiring details on WorkWay.`
       : `Explore ${name}'s company profile, teams, and hiring information on WorkWay.`;
 
-  const logo = company.logo_url || "/og-default.png";
-
+  const logo = company.logo_url || "https://www.workway.dev/logo.png";
   return [
     // Basic
     { title },
