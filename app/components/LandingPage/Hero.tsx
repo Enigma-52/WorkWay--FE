@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import OnboardingModal from "./OnboardingModal";
@@ -52,14 +53,11 @@ const Hero = () => {
 
           {/* CTA */}
           <div className="flex flex-col items-center gap-3 opacity-0 animate-fade-up stagger-3">
-            <Button
-              variant="hero"
-              size="xl"
-              className="group"
-              onClick={() => setShowOnboarding(true)}
-            >
-              Enter WorkWay
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/companies">
+                Enter WorkWay
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
             <span className="text-xs text-muted-foreground font-mono">
               yes, it actually works

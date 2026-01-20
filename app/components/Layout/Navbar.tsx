@@ -48,9 +48,11 @@ const Navbar = () => {
         </nav>
 
         {/* CTA */}
-        <Button size="sm" className="cursor-pointer gap-1">
-          Get Started
-          <ArrowRight className="w-4 h-4" />
+        <Button size="sm" className="gap-1" asChild>
+          <Link to="/companies">
+            Get Started
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </Button>
       </div>
     </header>
